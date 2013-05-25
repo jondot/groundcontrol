@@ -1,58 +1,56 @@
 package main
 
 import (
-  "net/http"
-  "encoding/json"
-  "container/ring"
-  "time"
-  "fmt"
-  "log"
+	"container/ring"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
+	"time"
 )
 
 type WebReporter struct {
-  health Health
-  Mount string
-  history *ring.Ring
-  lastReport time.Time
-  historyInterval int
+	health          Health
+	Mount           string
+	history         *ring.Ring
+	lastReport      time.Time
+	historyInterval int
 }
 
-func NewWebReporter(historyInter int, historyBacklog int)(h *WebReporter){
-  return &WebReporter{ Mount: "/health", history: ring.New(historyBacklog), historyInterval: historyInter }
+func NewWebReporter(historyInter int, historyBacklog int) (h *WebReporter) {
+	return &WebReporter{Mount: "/health", history: ring.New(historyBacklog), historyInterval: historyInter}
 }
 
-func (self *WebReporter) ReportHealth(h *Health){
-  self.health = *h
-  self.addReading(*h)
+func (self *WebReporter) ReportHealth(h *Health) {
+	self.health = *h
+	self.addReading(*h)
 }
 
 func (self *WebReporter) addReading(h Health) {
-  t := time.Now()
+	t := time.Now()
 
-  if t.Sub(self.lastReport).Seconds() > float64(self.historyInterval) {
-    self.lastReport = t
+	if t.Sub(self.lastReport).Seconds() > float64(self.historyInterval) {
+		self.lastReport = t
 
-    p := self.history.Prev()
-    p.Value = map[string]Health{ fmt.Sprintf("%d", t.Unix()): h }
-    self.history = p
-  }
+		p := self.history.Prev()
+		p.Value = map[string]Health{fmt.Sprintf("%d", t.Unix()): h}
+		self.history = p
+	}
 }
 
-func (self *WebReporter) Handler(w http.ResponseWriter, r *http.Request){
-  hdr := w.Header()
-  hdr.Add("Access-Control-Allow-Origin","*")
-  series := []map[string]Health{}
-			self.history.Do(func(x interface{}) {
-				if x != nil {
-					series = append(series, x.(map[string]Health))
-				}
-			})
-  log.Println("series", series)
-  enc := json.NewEncoder(w)
-  err := enc.Encode(&series)
-  if err != nil{
-    log.Println("encoding error", err)
-  }
+func (self *WebReporter) Handler(w http.ResponseWriter, r *http.Request) {
+	hdr := w.Header()
+	hdr.Add("Access-Control-Allow-Origin", "*")
+	series := []map[string]Health{}
+	self.history.Do(func(x interface{}) {
+		if x != nil {
+			series = append(series, x.(map[string]Health))
+		}
+	})
+	log.Println("series", series)
+	enc := json.NewEncoder(w)
+	err := enc.Encode(&series)
+	if err != nil {
+		log.Println("encoding error", err)
+	}
 }
-
-
