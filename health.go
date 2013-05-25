@@ -1,7 +1,7 @@
 package main
 
 import (
-  "github.com/cloudfoundry/gosigar"
+  "github.com/jondot/gosigar"
   "fmt"
   "os"
   "strconv"
