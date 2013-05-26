@@ -3,7 +3,7 @@
 Ground Control is a Go based daemon that runs on your Pi and lets you
 manage and monitor it with ease.
 
-See a screenshot of [the management UI](https://raw.github.com/jondot/groundcontrol/master/ui-screenshot.png).
+See a screenshot of [the management UI](https://raw.github.com/jondot/groundcontrol/master/ui-screenshot.png) and [my Pi's temperature on Librato](https://raw.github.com/jondot/groundcontrol/master/pi-librato.png).
 
 
 
