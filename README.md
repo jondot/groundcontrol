@@ -1,7 +1,7 @@
 # Ground Control
 
 Ground Control is a Go based daemon that runs on your Pi and lets you
-manage and monitor your it with ease.
+manage and monitor it with ease.
 
 
 
@@ -95,7 +95,7 @@ flexible -- you can use Ground Control on any machine (not just a Pi) as
 long as it will expose a temperature in a file-like device.
 
 
-### Contorls
+### Controls
 
 You can add and remove controls (commands that your Ground Control can
 run) by editing or specifying them with your configuration file..
