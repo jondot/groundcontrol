@@ -144,11 +144,20 @@ Here's a short guide if you want to experiment with Ground Control yourself.
 
 In each case, start of by taking a Ground Control repo clone.
 
+### Compiling
+
+Set up dependencies and build:
+
+```
+$ go get github.com/jondot/gosigar
+& go build
+```
+
 
 
 ### Cross Compiling
 
-Cross compilation is when you're compiling on System A, for a different System B.
+You probably want to build on your own (much more powerful) system rather than on the Pi itself to save time.
 
 In my case I'll be compiling a Go binary on a Mac (OSX, x64), for a Raspberry PI (Linux, ARMv5/6).
 
