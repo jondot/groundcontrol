@@ -13,16 +13,15 @@
 . /lib/lsb/init-functions
  
 name="groundcontrol"
-gc_bin="/opt/groundcontrol/groundcontrol"
+gc_home="/opt/groundcontrol"
+gc_bin="$gc_home/groundcontrol"
 gc_conf="/etc/groundcontrol.json"
 pid_file="/var/run/$name.pid"
  
 start () {
 	command="${gc_bin} -- -config ${gc_conf}"
-	log_daemon_msg "Starting $command"
- 
 	log_daemon_msg "Starting $name"
-	if start-stop-daemon --start --quiet --oknodo --pidfile "$pid_file" -b -m --exec $command; then
+	if start-stop-daemon --start --quiet --oknodo -d $gc_home --pidfile "$pid_file" -b -m --exec $command; then
 		log_end_msg 0
 	else
 		log_end_msg 1
