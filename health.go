@@ -1,5 +1,15 @@
 package main
 
+/*
+  Health
+
+  Hold the general structure to be used for gathering health metrics.
+
+  Health should know how to transform itself into a map, which is
+  useful for those who don't want to deal with strongly-typed value
+  with their reporters
+*/
+
 import (
 	"fmt"
 	"github.com/jondot/gosigar"

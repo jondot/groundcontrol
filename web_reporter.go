@@ -1,5 +1,26 @@
 package main
 
+/*
+   Web Reporter
+
+   Will hold a series of Health reports, so that it will be easy to
+   plot things like time-series.
+
+   Every `ReportHealth` invocation will tuck an additional Health value
+   onto the series.
+
+   The series width is fixed and old measurements are dropped (this is a
+   moving window).
+
+   A couple of configuration parameters are relevant here:
+   
+   historyInterval - at what distance to take measurements in seconds
+   (every minute, hour, etc)
+
+   historyBacklog - how many measurement points to hold. This affects
+   memory usage
+*/
+
 import (
 	"container/ring"
 	"encoding/json"
