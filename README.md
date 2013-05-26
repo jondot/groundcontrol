@@ -9,7 +9,7 @@ manage and monitor it with ease.
 ## Usage
 
 Download the Ground Control binary, or build from source (see
-`Building`).
+`Development`).
 
 
 
