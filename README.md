@@ -5,6 +5,7 @@ manage and monitor it with ease.
 
 See a screenshot of [the management UI](https://raw.github.com/jondot/groundcontrol/master/ui-screenshot.png) and [my Pi's temperature on Librato](https://raw.github.com/jondot/groundcontrol/master/pi-librato.png).
 
+See `FAQ` for some common question that got asked on the [Hacker News](https://news.ycombinator.com/item?id=5771325) thread.
 
 
 ## Usage
@@ -101,7 +102,33 @@ $ update-rc.d groundcontrol defaults
 ```
 
 
+## FAQ
 
+**Q: Is this specific to the RaspberryPi?**  
+A: Nope. Mechanically, it was built to work on any Unix like environment - just in case. However, the fact that Go makes such a slim resource profile, and a cross-compilation toolkit that works well makes it perfect for it (takes very little resource).
+
+
+
+**Q: Why was this made?**  
+A: So here we go:
+
+* For fun (as said here)
+* Scratching my own itch - I needed a way to remotely run commands though a nice UI, and a way to see how my Pi is doing when i'm not at home.
+* For lack of better tooling - every thing I evaluated needed a combination of things, no other tool gave me all-in-one. This made the resources bloated. With GC, you get around 3-4MB RSS.
+* To prove to myself that Go can be as great for development on the Pi as Python (which many people use there)
+I also like the idea of Internet of Things http://en.wikipedia.org/wiki/Internet_of_Things
+
+
+**Q: Does it need root?**  
+A: Not necessarily. Since it runs shell commands for you exposed through REST, it boils down to whether your commands require root (example for these is starting/stopping services)
+
+
+**Q: Does it work on Windows?**  
+A: No. For health collection it uses the production grade library [sigar](http://www.hyperic.com/products/sigar) which support unixy environments. Thankfully, there was a go port of it.
+
+
+**Q: Can you do the same thing with other tools**  
+A: Yes. I would opt for Collectd with a good set of plugins and which is C based. You'll have to make sure there's a plugin for your choice of metrics database. Then write some kind of Web endpoint in Python to execute shell commands. However as I mentioned before, sum up the resources of those, and you'll get a bigger consumption.
 
 
 ## More Details
