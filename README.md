@@ -103,7 +103,7 @@ A: Nope. Mechanically, it was built to work on any Unix like environment - just 
 A: So here we go:
 
 * For fun (as said here)
-* Scratching my own itch - I needed a way to remotely run commands though a nice UI, and a way to see how my Pi is doing when i'm not at home.
+* Scratching my own itch - I needed a way to remotely run commands though a nice UI, and a way to see how my Pi is doing when I'm not at home.
 * For lack of better tooling - every thing I evaluated needed a
 combination of things, no other tool gave me all-in-one. This made the
 resources bloated. With GC, you get a few megabytes of memory usage.
@@ -172,7 +172,7 @@ And you can easily build an app (mobile?) yourself that makes use of those.
 
 Here's a short guide if you want to experiment with Ground Control yourself.
 
-In each case, start of by taking a Ground Control repo clone.
+In each case, start off by taking a Ground Control repo clone.
 
 ### Compiling
 
@@ -226,7 +226,7 @@ They are sorted by the level of fun/hackability you can get from it, but YMMV :)
 Note, that [go-metrics](https://github.com/rcrowley/go-metrics) for example, could have replaced the entire reporter stack here using its various pluggable 
 reporters, however, it only supports integers out of the box.
 
-At the worst case, `go-metrics` itself can be implemented as a reporter (in fact it will be a aggregate reporter of reporters :).
+At the worst case, `go-metrics` itself can be implemented as a reporter (in fact it will be an aggregate reporter of reporters :).
 
 # Contributing
 
