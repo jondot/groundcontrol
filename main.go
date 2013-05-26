@@ -1,5 +1,17 @@
 package main
 
+/*
+  Ground Control
+
+  The main outline should read the configuration file, set up
+  various reporters and a timer with a goroutine that handles grabbing
+  the health data and reporting under each kind of reporter.
+
+  It should also set up the various HTTP handlers on the proper
+  mountpoints.
+*/
+
+
 import (
 	"encoding/json"
 	"flag"

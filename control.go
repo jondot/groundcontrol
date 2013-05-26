@@ -1,5 +1,33 @@
 package main
 
+/*
+  Control
+
+  This is the part of Ground Control that handles invoking
+  shell commands and exposing the UI.
+
+  The invoking part needs commands to be present in the configuration
+  like so:
+
+  ```
+  "controls" : {
+    "xbmc": {
+      "on" : "/etc/init.d/xbmc start",
+      "off" : "/etc/init.d/xbmc stop"
+    }
+  }
+  ```
+  While controls are accessed RESTfully like so:
+
+  ```
+  POST controls/control_name/on
+  POST controls/control_name/off
+  POST controls/control_name/once
+  GET controls/control_name/status
+  ```
+*/
+
+
 import (
 	"encoding/json"
 	"errors"
