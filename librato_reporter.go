@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"fmt"
 )
 
 type LibratoBulk struct {
@@ -20,6 +21,12 @@ type LibratoReporter struct {
 type tbody map[string]tibody
 type tibody []tmetric
 type tmetric map[string]interface{}
+
+var libratoReporterUA = func() string {
+	return fmt.Sprintf("groundcontrol/%s", VERSION)
+}()
+
+
 
 func NewLibratoReporter(creds ReporterCredentials) (h *LibratoReporter) {
 	return &LibratoReporter{Credentials: creds}
@@ -48,6 +55,7 @@ func (self *LibratoReporter) ReportHealth(h *Health) {
 	}
 
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Set("User-Agent", libratoReporterUA)
 	req.SetBasicAuth(self.Credentials.User, self.Credentials.Key)
 	resp, err := http.DefaultClient.Do(req)
 
