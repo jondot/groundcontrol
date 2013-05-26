@@ -73,9 +73,33 @@ down and turning on XBMC.
   }
 ```
 
+### init.d
 
-You might want to drop an `init.d` or `upstart` script to keep
+You might want to use an `init.d` or `upstart` script to keep
 `groundcontrol` up at all times.
+
+An default init.d script is included here `support/init.d/groundcontrol`.
+
+Place your `groundcontrol` folder at:
+
+```
+/opt/groundcontrol/
+```
+
+And configuration should be at:
+
+```
+/etc/groundcontrol.json
+```
+
+You can edit your `support/init.d/groundcontrol` if you want to modify these paths.
+
+After you've verified `/etc/init.d/groundcontrol start` to be working, to set up the default run order you can use:
+
+```
+$ update-rc.d groundcontrol defaults
+```
+
 
 
 
