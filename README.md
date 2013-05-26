@@ -1,35 +1,31 @@
 # Ground Control
 
-Ground Control is a Go based daemon that runs on your Pi and lets you
+Ground Control is a Go based daemon that runs on your Pi and lets you 
 manage and monitor it with ease.
 
 See a screenshot of [the management UI](https://raw.github.com/jondot/groundcontrol/master/ui-screenshot.png) and [my Pi's temperature on Librato](https://raw.github.com/jondot/groundcontrol/master/pi-librato.png).
 
 See `FAQ` for some common question that got asked on the [Hacker News](https://news.ycombinator.com/item?id=5771325) thread.
 
-
 ## Usage
 
 Download the Ground Control binary, or build from source (see
 `Development`).
 
-
-
 Then, transfer it to your Pi.
-
 
 ```
 $ scp groundcontrol-v0.0.1.tar.gz pi-user@PI_HOST:
 ```
 
-On the Pi, extract and set up.
+On the Pi, extract and change directories.
 
 ```
 $ tar zxvf groundcontrol-v0.0.1.tar.gz
 $ cd groundcontrol-v0.0.1/
 ```
 
-run with a simple command.
+Run Ground Control with a simple command.
 
 ```
 $ ./groundcontrol -config myconfig.json
@@ -44,7 +40,6 @@ http://PI_HOST:4571/
 For configuration, use `groundcontrol.json.sample` as a basis and make
 sure to customize these fields:
 
-
 * `librato` - You can make a free account at
 [Librato](http://librato.com) and then drop the key and user there.
 
@@ -57,10 +52,8 @@ best.
 Both Librato and TempoDB were included because they have different
 retention and resolution and features for the free plans.
 
-
 Next up, set up your "controls". This is where you input a label, and an
 "on", "off", "once" commands to automatically build a GUI around it.
-
 
 Here is an example of having an `xbmc` control. It allows for shutting
 down and turning on XBMC.
@@ -101,13 +94,10 @@ After you've verified `/etc/init.d/groundcontrol start` to be working, to set up
 $ update-rc.d groundcontrol defaults
 ```
 
-
 ## FAQ
 
 **Q: Is this specific to the RaspberryPi?**  
 A: Nope. Mechanically, it was built to work on any Unix like environment - just in case. However, the fact that Go makes such a slim resource profile, and a cross-compilation toolkit that works well makes it perfect for it (takes very little resource).
-
-
 
 **Q: Why was this made?**  
 A: So here we go:
@@ -118,24 +108,19 @@ A: So here we go:
 * To prove to myself that Go can be as great for development on the Pi as Python (which many people use there)
 I also like the idea of Internet of Things http://en.wikipedia.org/wiki/Internet_of_Things
 
-
 **Q: Does it need root?**  
 A: Not necessarily. Since it runs shell commands for you exposed through REST, it boils down to whether your commands require root (example for these is starting/stopping services)
-
 
 **Q: Does it work on Windows?**  
 A: No. For health collection it uses the production grade library [sigar](http://www.hyperic.com/products/sigar) which support unixy environments. Thankfully, there was a go port of it.
 
-
 **Q: Can you do the same thing with other tools**  
 A: Yes. I would opt for Collectd with a good set of plugins and which is C based. You'll have to make sure there's a plugin for your choice of metrics database. Then write some kind of Web endpoint in Python to execute shell commands. However as I mentioned before, sum up the resources of those, and you'll get a bigger consumption.
-
 
 ## More Details
 
 There's plenty more to Ground Control under the hood, let's list out a
 few things.
-
 
 ### Temperature Monitoring
 
@@ -144,17 +129,14 @@ update its own health records.
 
 This is made so the mechanism is
 flexible -- you can use Ground Control on any machine (not just a Pi) as
-long as it will expose a temperature in a file-like device.
-
+long as it will expose a temperature reading in a file-like device.
 
 ### Controls
 
 You can add and remove controls (commands that your Ground Control can
 run) by editing or specifying them with your configuration file..
 
-
 Here's a full description of the format:
-
 
 ```
 {
@@ -171,7 +153,6 @@ By convention `control_name` is snake_case and we turn it into "Control Name" on
 
 The name should be nice for using in a REST API, in this case the commands turn into:
 
-
 ```
 POST controls/control_name/on
 POST controls/control_name/off
@@ -184,11 +165,6 @@ The `status` command are async, and we return a 200 OK for success.
 
 
 And you can easily build an app (mobile?) yourself that makes use of those.
-
-
-
-
-
 
 ## Development
 
@@ -204,8 +180,6 @@ Set up dependencies and build:
 $ go get github.com/jondot/gosigar
 & go build
 ```
-
-
 
 ### Cross Compiling
 
@@ -231,7 +205,6 @@ and then I just
 $ go-pi build
 ````
 
-
 If you don't want to use an alias then this is the command to cross-compile for the Pi:
 
 ```
@@ -246,30 +219,17 @@ Ground control surrounds around several concepts:
 * Health - the entity that's responsible to gather all of the important health metrics.
 * Control - a switchboard-like entity that runs commands on request.
 
-They are sorted by the level of fun/hackability you can get from it, but YMMV :)
-
+They are sorted by the level of fun/hackability you can get from it, but YMMV :).
 
 Note, that [go-metrics](https://github.com/rcrowley/go-metrics) for example, could have replaced the entire reporter stack here using its various pluggable 
 reporters, however, it only supports integers out of the box.
 
 At the worst case, `go-metrics` itself can be implemented as a reporter (in fact it will be a aggregate reporter of reporters :).
 
-
-
-
-
-
-
-
-
 # Contributing
 
 Fork, implement, add tests, pull request, get my everlasting thanks and a respectable place here :).
 
-
 # Copyright
 
 Copyright (c) 2013 [Dotan Nahum](http://gplus.to/dotan) [@jondot](http://twitter.com/jondot). See MIT-LICENSE for further details.
-
-
-
