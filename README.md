@@ -190,7 +190,7 @@ In my case I'll be compiling a Go binary on a Mac (OSX, x64), for a Raspberry PI
 Here's how to do it on a Mac and `brew`:
 
 ```
-$ brew install go --devel --cross-compile-all    # I usually take --devel with Go, drop if you dont.
+$ brew install go --devel --cross-compile-all    # I usually take --devel with Go, drop if you don't.
 ```
 
 If you've got ZShell, or a nice alias-supporting shell, this is a nice alias:
