@@ -104,7 +104,9 @@ A: So here we go:
 
 * For fun (as said here)
 * Scratching my own itch - I needed a way to remotely run commands though a nice UI, and a way to see how my Pi is doing when i'm not at home.
-* For lack of better tooling - every thing I evaluated needed a combination of things, no other tool gave me all-in-one. This made the resources bloated. With GC, you get around 3-4MB RSS.
+* For lack of better tooling - every thing I evaluated needed a
+combination of things, no other tool gave me all-in-one. This made the
+resources bloated. With GC, you get a few megabytes of memory usage.
 * To prove to myself that Go can be as great for development on the Pi as Python (which many people use there)
 I also like the idea of Internet of Things http://en.wikipedia.org/wiki/Internet_of_Things
 
