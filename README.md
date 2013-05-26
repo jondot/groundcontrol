@@ -1,6 +1,6 @@
 # Ground Control
 
-Ground Control is a Go based daemon that runs on your Pi and lets you
+Ground Control is a Go based daemon that runs on your Pi and lets you 
 manage and monitor it with ease.
 
 See a screenshot of [the management UI](https://raw.github.com/jondot/groundcontrol/master/ui-screenshot.png) and [my Pi's temperature on Librato](https://raw.github.com/jondot/groundcontrol/master/pi-librato.png).
@@ -18,14 +18,14 @@ Then, transfer it to your Pi.
 $ scp groundcontrol-v0.0.1.tar.gz pi-user@PI_HOST:
 ```
 
-On the Pi, extract and set up.
+On the Pi, extract and change directories.
 
 ```
 $ tar zxvf groundcontrol-v0.0.1.tar.gz
 $ cd groundcontrol-v0.0.1/
 ```
 
-run with a simple command.
+Run Ground Control with a simple command.
 
 ```
 $ ./groundcontrol -config myconfig.json
@@ -129,7 +129,7 @@ update its own health records.
 
 This is made so the mechanism is
 flexible -- you can use Ground Control on any machine (not just a Pi) as
-long as it will expose a temperature in a file-like device.
+long as it will expose a temperature reading in a file-like device.
 
 ### Controls
 
@@ -219,7 +219,7 @@ Ground control surrounds around several concepts:
 * Health - the entity that's responsible to gather all of the important health metrics.
 * Control - a switchboard-like entity that runs commands on request.
 
-They are sorted by the level of fun/hackability you can get from it, but YMMV :)
+They are sorted by the level of fun/hackability you can get from it, but YMMV :).
 
 Note, that [go-metrics](https://github.com/rcrowley/go-metrics) for example, could have replaced the entire reporter stack here using its various pluggable 
 reporters, however, it only supports integers out of the box.
