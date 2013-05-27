@@ -7,6 +7,11 @@ See a screenshot of [the management UI](https://raw.github.com/jondot/groundcont
 
 See `FAQ` for some common question that got asked on the [Hacker News](https://news.ycombinator.com/item?id=5771325) thread.
 
+
+**Update**: I just pushed
+ [groundcontrol-ui](https://github.com/jondot/groundcontrol-ui) if you
+want to hack on the UI part of groundcontrol.
+
 ## Usage
 
 Download the Ground Control binary, or build from source (see
