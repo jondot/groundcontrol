@@ -14,7 +14,7 @@ want to hack on the UI part of groundcontrol.
 
 ## Usage
 
-Download the [Ground Control](http://jondot.github.io/groundcontrol/groundcontrol-0.0.1.tar.gz) package, or build from source (see
+Download the [Ground Control package](http://jondot.github.io/groundcontrol/groundcontrol-0.0.1.tar.gz), or build from source (see
 `Development`).
 
 Then, transfer it to your Pi.
