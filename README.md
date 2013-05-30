@@ -14,7 +14,7 @@ want to hack on the UI part of groundcontrol.
 
 ## Usage
 
-Download the Ground Control binary, or build from source (see
+Download the [Ground Control package](http://jondot.github.io/groundcontrol/groundcontrol-0.0.1.tar.gz), or build from source (see
 `Development`).
 
 Then, transfer it to your Pi.
@@ -30,7 +30,7 @@ $ tar zxvf groundcontrol-v0.0.1.tar.gz
 $ cd groundcontrol-v0.0.1/
 ```
 
-Run Ground Control with a simple command.
+Run Ground Control with a simple command (you should have `config.json.sample` there for a quick start).
 
 ```
 $ ./groundcontrol -config myconfig.json
