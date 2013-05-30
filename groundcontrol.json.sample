@@ -14,11 +14,21 @@
   "history_interval": 60,
   "history_backlog": 20,
 
+  "tempodb":{
+    "user": "delete this or see http://tempo-db.com",
+    "key": "delete this or see http://tempo-db.com"
+  },
+
   "librato" :{
     "user": "delete this or see http://librato.com",
     "key": "delete this or see http://librato.com"
   },
 
+  "graphite" : {
+    "prefix"  : "prefix-or-key.",
+    "postfix" : ".ip-pi",
+    "linerec": "carbon.hostedgraphite.com:2003"
+  },
 
   "controls" : {
     "xbmc": {

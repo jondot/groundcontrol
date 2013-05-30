@@ -27,7 +27,6 @@ package main
   ```
 */
 
-
 import (
 	"encoding/json"
 	"errors"

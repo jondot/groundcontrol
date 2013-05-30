@@ -3,9 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
-	"fmt"
 )
 
 type LibratoBulk struct {
@@ -25,8 +25,6 @@ type tmetric map[string]interface{}
 var libratoReporterUA = func() string {
 	return fmt.Sprintf("groundcontrol/%s", VERSION)
 }()
-
-
 
 func NewLibratoReporter(creds ReporterCredentials) (h *LibratoReporter) {
 	return &LibratoReporter{Credentials: creds}

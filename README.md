@@ -51,6 +51,15 @@ sure to customize these fields:
 * `tempodb` - You can make a free account at
 [TempoDB](http://tempo-db.com) and then drop the key and user there.
 
+* `Graphite` or `hostedgraphite` - You can use your own standard Graphite server,
+or you can make a 14-day trial account at
+[TempoDB](http://www.hostedgraphite.com) and then drop the key as a
+prefix. **Important**: for `prefix` specify a trailing dot `.` and
+`postfix` a leading dot `.`, if you want them.
+
+
+
+
 Make sure to go over the plans (paid and free) and see what fits you
 best. 
 
