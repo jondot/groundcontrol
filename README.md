@@ -58,6 +58,16 @@ prefix. **Important**: for `prefix` specify a trailing dot `.` and
 `postfix` a leading dot `.`, if you want them.
 
 
+Here's a typical graphite config:
+
+```
+  "graphite" : {
+    "prefix"  : "prefix-or-key.",
+    "postfix" : ".ip-pi",
+    "linerec": "localhost:2003"
+  },
+```
+
 
 
 Make sure to go over the plans (paid and free) and see what fits you

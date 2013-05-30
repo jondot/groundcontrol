@@ -24,11 +24,6 @@
     "key": "delete this or see http://librato.com"
   },
 
-  "graphite" : {
-    "prefix"  : "prefix-or-key.",
-    "postfix" : ".ip-pi",
-    "linerec": "carbon.hostedgraphite.com:2003"
-  },
 
   "controls" : {
     "xbmc": {
