@@ -53,7 +53,7 @@ sure to customize these fields:
 
 * `Graphite` or `hostedgraphite` - You can use your own standard Graphite server,
 or you can make a 14-day trial account at
-[TempoDB](http://www.hostedgraphite.com) and then drop the key as a
+[Hosted Graphite](http://www.hostedgraphite.com) and then drop the key as a
 prefix. **Important**: for `prefix` specify a trailing dot `.` and
 `postfix` a leading dot `.`, if you want them.
 
