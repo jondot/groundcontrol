@@ -56,6 +56,11 @@ func (self *LibratoReporter) ReportHealth(h *Health) {
 	req.Header.Set("User-Agent", libratoReporterUA)
 	req.SetBasicAuth(self.Credentials.User, self.Credentials.Key)
 	resp, err := http.DefaultClient.Do(req)
+	
+	if nil != err {
+		log.Println("Error receiving response", err)
+		return
+	}
 
 	if resp.StatusCode != 200 {
 		log.Println("Error: Librato API Error: ", resp)
