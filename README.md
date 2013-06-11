@@ -23,11 +23,17 @@ Then, transfer it to your Pi.
 $ scp groundcontrol-v0.0.1.tar.gz pi-user@PI_HOST:
 ```
 
+or download it directly on your Pi
+
+```
+$ wget http://jondot.github.io/groundcontrol/groundcontrol-0.0.1.tar.gz
+```
+
 On the Pi, extract and change directories.
 
 ```
-$ tar zxvf groundcontrol-v0.0.1.tar.gz
-$ cd groundcontrol-v0.0.1/
+$ tar zxvf groundcontrol-0.0.1.tar.gz
+$ cd groundcontrol-0.0.1/
 ```
 
 Run Ground Control with a simple command (you should have `config.json.sample` there for a quick start).
