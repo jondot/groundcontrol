@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -20,6 +21,10 @@ type LibratoReporter struct {
 type tbody map[string]tibody
 type tibody []tmetric
 type tmetric map[string]interface{}
+
+var libratoReporterUA = func() string {
+	return fmt.Sprintf("groundcontrol/%s", VERSION)
+}()
 
 func NewLibratoReporter(creds ReporterCredentials) (h *LibratoReporter) {
 	return &LibratoReporter{Credentials: creds}
@@ -48,8 +53,14 @@ func (self *LibratoReporter) ReportHealth(h *Health) {
 	}
 
 	req.Header.Add("Content-Type", "application/json")
+	req.Header.Set("User-Agent", libratoReporterUA)
 	req.SetBasicAuth(self.Credentials.User, self.Credentials.Key)
 	resp, err := http.DefaultClient.Do(req)
+	
+	if nil != err {
+		log.Println("Error receiving response", err)
+		return
+	}
 
 	if resp.StatusCode != 200 {
 		log.Println("Error: Librato API Error: ", resp)

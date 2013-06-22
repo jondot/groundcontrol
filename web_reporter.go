@@ -13,7 +13,7 @@ package main
    moving window).
 
    A couple of configuration parameters are relevant here:
-   
+
    historyInterval - at what distance to take measurements in seconds
    (every minute, hour, etc)
 

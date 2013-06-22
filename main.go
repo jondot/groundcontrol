@@ -11,7 +11,6 @@ package main
   mountpoints.
 */
 
-
 import (
 	"encoding/json"
 	"flag"
@@ -69,6 +68,13 @@ func main() {
 	} else {
 		reporters = append(reporters, NewLibratoReporter(config.Librato))
 		log.Println("Reporters: Librato OK.")
+	}
+
+	if config.Graphite.LineRec == "" {
+		log.Println("Reporters: No Graphite config, skipping.")
+	} else {
+		reporters = append(reporters, NewGraphiteReporter(config.Graphite))
+		log.Println("Reporters: Graphite OK.")
 	}
 
 	if config.Stdout {
