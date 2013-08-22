@@ -82,7 +82,7 @@ func main() {
 		reporters = append(reporters, NewStdoutReporter())
 	}
 
-	log.Println("Lauching Health")
+	log.Println("Launching Health")
 
 	report(config, &reporters)
 
