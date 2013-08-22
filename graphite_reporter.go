@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"time"
 )
 
 type GraphiteReporter struct {
@@ -17,8 +18,11 @@ func NewGraphiteReporter(conf GraphiteConfig) (h *GraphiteReporter) {
 func (self *GraphiteReporter) ReportHealth(h *Health) {
 	hmap := h.Map()
 	data := ""
+	now := time.Now()
+	ts := now.Unix()
+
 	for k, v := range hmap {
-		data += fmt.Sprintf("%s%s%s %v\n", self.Config.Prefix, k, self.Config.Postfix, v)
+		data += fmt.Sprintf("%s%s%s %v %v\n", self.Config.Prefix, k, self.Config.Postfix, v, ts)
 	}
 
 	addr, err := net.ResolveTCPAddr("tcp", self.Config.LineRec)
